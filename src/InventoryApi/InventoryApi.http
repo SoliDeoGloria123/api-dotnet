@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:5264
+@token =
+
+### Health
+GET {{baseUrl}}/api/health
+
+### Register
+# @name register
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "juan",
+  "password": "Password123"
+}
+
+### Login
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "juan",
+  "password": "Password123"
+}
+
+### Me
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer {{login.response.body.$.token}}
+
+### Create product
+POST {{baseUrl}}/api/products
+Authorization: Bearer {{login.response.body.$.token}}
+Content-Type: application/json
+
+{
+  "name": "Wireless mouse",
+  "sku": "MOUSE-001",
+  "description": "USB wireless mouse",
+  "category": "Accessories",
+  "quantity": 10,
+  "unitPrice": 89.90
+}
+
+### List products
+GET {{baseUrl}}/api/products?page=1&pageSize=10
+Authorization: Bearer {{login.response.body.$.token}}
