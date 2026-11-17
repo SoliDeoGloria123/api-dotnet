@@ -1,0 +1,15 @@
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.db
+*.db-shm
+*.db-wal
+inventory.db
+.vs/
+.idea/
+.vscode/
+*.log
+TestResults/
+.DS_Store
